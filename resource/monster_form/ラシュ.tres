@@ -22,5 +22,5 @@ base_MAG = 80
 base_RES = 80
 description = ""
 flavor_text = Array[ExtResource("3_uh2ru")]([])
-flavor_text_weight = Array[int]([1])
+flavor_text_weight = Array[int]([])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"
