@@ -35,7 +35,7 @@ power = 0
 mp = 15
 target = 0
 damage_type = 0
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_xxvxc")]([SubResource("Resource_c008u"), ExtResource("4_gr6ta")])
 description = "電気エネルギーを溜め込んで、[color=coral]HP[/color]を回復する。さらに、次のターンだけ[color=dodgerblue]MAG[/color]が2倍になる。"
 metadata/_custom_type_script = "uid://nd5of0c4w8pr"

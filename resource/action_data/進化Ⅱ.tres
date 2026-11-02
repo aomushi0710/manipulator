@@ -15,7 +15,7 @@ power = 0
 mp = 999
 target = 4
 damage_type = 0
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_7oqb0")]([])
 description = "最終形態へ進化する。
 ステータスが大幅に強化さ

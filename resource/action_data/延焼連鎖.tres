@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="ActionData" load_steps=11 format=3 uid="uid://b0jokma2cb67n"]
+
+[ext_resource type="Script" uid="uid://n6604vih5t55" path="res://src/resource/static_data/ability/ability.gd" id="1_jx7fo"]
+[ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="2_5h57d"]
+[ext_resource type="Script" uid="uid://nd5of0c4w8pr" path="res://src/resource/static_data/action_data.gd" id="3_2jv72"]
+[ext_resource type="Resource" uid="uid://dyfst4wxer3yx" path="res://resource/element/火属性.tres" id="3_x105n"]
+[ext_resource type="Script" uid="uid://bkfsnbhetj7ha" path="res://src/resource/static_data/ability/extra.gd" id="5_nq7s3"]
+[ext_resource type="Script" uid="uid://djowhg420fpkh" path="res://src/resource/data/trigger.gd" id="6_frqxd"]
+
+[sub_resource type="Resource" id="Resource_mitk1"]
+script = ExtResource("3_2jv72")
+id = -3
+name = "延焼連鎖"
+element = Array[ExtResource("2_5h57d")]([ExtResource("3_x105n")])
+max_chance = 0
+power = 30
+mp = 0
+target = 2
+damage_type = 2
+is_contact_attack = false
+ability = Array[ExtResource("1_jx7fo")]([])
+description = "激しい勢いの炎で敵を攻撃し、
+50%の確率で連続で攻撃する。
+(最大3回まで)"
+metadata/_custom_type_script = "uid://nd5of0c4w8pr"
+
+[sub_resource type="Resource" id="Resource_q5hfb"]
+script = ExtResource("5_nq7s3")
+action = SubResource("Resource_mitk1")
+name = "延焼連鎖"
+bbcode_name = "[color=red]延焼連鎖[/color]"
+target = 2
+chance = 50
+timing = 2
+trigger = Array[ExtResource("6_frqxd")]([])
+description = "激しい勢いの炎で敵を攻撃し、
+50%の確率で連続で攻撃する。
+(最大3回まで)"
+battle_log_message = "炎の勢いが弱まらない！"
+placeholder = 0
+metadata/_custom_type_script = "uid://bkfsnbhetj7ha"
+
+[sub_resource type="Resource" id="Resource_w35yk"]
+script = ExtResource("3_2jv72")
+id = -2
+name = "延焼連鎖"
+element = Array[ExtResource("2_5h57d")]([ExtResource("3_x105n")])
+max_chance = 0
+power = 30
+mp = 0
+target = 2
+damage_type = 2
+is_contact_attack = false
+ability = Array[ExtResource("1_jx7fo")]([SubResource("Resource_q5hfb")])
+description = "激しい勢いの炎で敵を攻撃し、
+50%の確率で連続で攻撃する。
+(最大3回まで)"
+metadata/_custom_type_script = "uid://nd5of0c4w8pr"
+
+[sub_resource type="Resource" id="Resource_7emm7"]
+script = ExtResource("5_nq7s3")
+action = SubResource("Resource_w35yk")
+name = "延焼連鎖"
+bbcode_name = "[color=red]延焼連鎖[/color]"
+target = 2
+chance = 50
+timing = 2
+trigger = Array[ExtResource("6_frqxd")]([])
+description = "激しい勢いの炎で敵を攻撃し、
+50%の確率で連続で攻撃する。
+(最大3回まで)"
+battle_log_message = "炎の勢いが弱まらない！"
+placeholder = 0
+metadata/_custom_type_script = "uid://bkfsnbhetj7ha"
+
+[resource]
+script = ExtResource("3_2jv72")
+id = 58
+name = "延焼連鎖"
+element = Array[ExtResource("2_5h57d")]([ExtResource("3_x105n")])
+max_chance = 10
+power = 30
+mp = 10
+target = 2
+damage_type = 2
+is_contact_attack = false
+ability = Array[ExtResource("1_jx7fo")]([SubResource("Resource_7emm7")])
+description = "激しい勢いの炎で敵を攻撃し、
+50%の確率で連続で攻撃する。
+(最大3回まで)"
+metadata/_custom_type_script = "uid://nd5of0c4w8pr"

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ActionData" load_steps=8 format=3 uid="uid://bnadcadyuc1h4"]
+
+[ext_resource type="Script" uid="uid://n6604vih5t55" path="res://src/resource/static_data/ability/ability.gd" id="1_il487"]
+[ext_resource type="Script" uid="uid://bywhlx527vv7b" path="res://src/resource/static_data/ability/healing.gd" id="2_jtkb0"]
+[ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="2_r35k0"]
+[ext_resource type="Script" uid="uid://nd5of0c4w8pr" path="res://src/resource/static_data/action_data.gd" id="3_74p7f"]
+[ext_resource type="Script" uid="uid://djowhg420fpkh" path="res://src/resource/data/trigger.gd" id="3_f7g6s"]
+[ext_resource type="Resource" uid="uid://dl5j0v1e805u5" path="res://resource/element/風属性.tres" id="5_dmgk4"]
+
+[sub_resource type="Resource" id="Resource_fnhgl"]
+script = ExtResource("2_jtkb0")
+status = 2
+amount_type = 2
+amount = 0.1
+name = "加速"
+bbcode_name = "[color=limegreen]加速[/color]"
+target = 4
+chance = 100
+timing = 2
+trigger = Array[ExtResource("3_f7g6s")]([])
+description = "10%だけ[color=lime_green]SPDゲージ[/color]を加速させます。"
+battle_log_message = ""
+placeholder = 0
+metadata/_custom_type_script = "uid://bywhlx527vv7b"
+
+[resource]
+script = ExtResource("3_74p7f")
+id = 59
+name = "追い風タックル"
+element = Array[ExtResource("2_r35k0")]([ExtResource("5_dmgk4")])
+max_chance = 30
+power = 40
+mp = 5
+target = 1
+damage_type = 1
+is_contact_attack = false
+ability = Array[ExtResource("1_il487")]([SubResource("Resource_fnhgl")])
+description = ""
+metadata/_custom_type_script = "uid://nd5of0c4w8pr"

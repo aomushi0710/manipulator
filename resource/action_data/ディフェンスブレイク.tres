@@ -35,7 +35,7 @@ power = 0
 mp = 20
 target = 0
 damage_type = 0
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_apyhf")]([SubResource("Resource_jx6ud")])
 description = "DEF弱体魔法。
 敵1体のDEFを弱体化する。

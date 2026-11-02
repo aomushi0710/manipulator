@@ -15,7 +15,7 @@ power = 50
 mp = 30
 target = 3
 damage_type = 2
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_uw0ue")]([])
 description = "全体攻撃魔法。稲妻が敵全体
 を駆け巡り、攻撃する。"

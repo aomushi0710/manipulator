@@ -37,7 +37,7 @@ power = 30
 mp = 10
 target = 1
 damage_type = 1
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_08quy")]([SubResource("Resource_5b0a5")])
 description = "大きな石の壁を地面から
 出現させて攻撃する。

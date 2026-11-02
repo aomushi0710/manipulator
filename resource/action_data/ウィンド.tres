@@ -15,7 +15,7 @@ power = 50
 mp = 10
 target = 2
 damage_type = 2
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_w027w")]([])
 description = "下級攻撃魔法。
 風を生み出して攻撃し、

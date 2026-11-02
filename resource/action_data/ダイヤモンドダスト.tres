@@ -15,7 +15,7 @@ power = 50
 mp = 30
 target = 3
 damage_type = 2
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_dbh3g")]([])
 description = "全体攻撃魔法。
 氷点下の大気で覆って
