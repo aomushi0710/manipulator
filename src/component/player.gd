@@ -34,7 +34,8 @@ func _ready() -> void:
 	else:
 		_sprite.texture = Global.monster_data[1].evolution_forms[Monster.Form.第一形態].image
 	
-	position = SaveManager.save_data.map_position
+	if SaveManager.save_data:
+		position = SaveManager.save_data.map_position
 
 
 func _physics_process(_delta: float) -> void:

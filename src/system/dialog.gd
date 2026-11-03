@@ -153,4 +153,5 @@ func _set_button(data: DialogData, format_args: Array) -> void:
 			button.hide()
 	
 	var first_button = _button_container.get_child(0) as GameButton
-	first_button.grab_focus()
+	if first_button:
+		first_button.grab_focus()
