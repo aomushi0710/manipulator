@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://cf0r1hmg65ryx"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://cf0r1hmg65ryx"]
 
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="3_aiy3j"]
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_u0k6b"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="4_15o2e"]
+[ext_resource type="Resource" uid="uid://b3pv37ff78aee" path="res://resource/flavor_text/monster/snooflake_1.tres" id="4_50dd5"]
 [ext_resource type="Resource" uid="uid://bv7ciiu33dpfq" path="res://resource/element/氷属性.tres" id="4_hwmsp"]
 [ext_resource type="Texture2D" uid="uid://cai52uvpjx18j" path="res://asset/image/monster/スノフレク.PNG" id="5_jty41"]
 
@@ -21,6 +22,6 @@ base_DEF = 120
 base_MAG = 120
 base_RES = 120
 description = ""
-flavor_text = Array[ExtResource("3_u0k6b")]([])
+flavor_text = Array[ExtResource("3_u0k6b")]([ExtResource("4_50dd5")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

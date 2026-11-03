@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://bh37y4d4ybgok"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://bh37y4d4ybgok"]
 
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_w537e"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="4_f50f3"]
+[ext_resource type="Resource" uid="uid://barrhi5pntyn6" path="res://resource/flavor_text/monster/sno_1.tres" id="4_tni17"]
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="7_ctdbq"]
 [ext_resource type="Resource" uid="uid://bv7ciiu33dpfq" path="res://resource/element/氷属性.tres" id="8_cv8jl"]
 [ext_resource type="Texture2D" uid="uid://h5vjkgwfndu3" path="res://asset/image/monster/スノ.PNG" id="9_cl2e3"]
@@ -21,6 +22,6 @@ base_DEF = 80
 base_MAG = 80
 base_RES = 80
 description = ""
-flavor_text = Array[ExtResource("3_w537e")]([])
+flavor_text = Array[ExtResource("3_w537e")]([ExtResource("4_tni17")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

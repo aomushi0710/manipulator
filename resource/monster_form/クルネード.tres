@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://b0kc5bsnhwewa"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://b0kc5bsnhwewa"]
 
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="3_0tpmk"]
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_bjo8g"]
 [ext_resource type="Resource" uid="uid://dl5j0v1e805u5" path="res://resource/element/風属性.tres" id="4_fbmc1"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="4_t2t12"]
+[ext_resource type="Resource" uid="uid://c45fif1rksfkq" path="res://resource/flavor_text/monster/spinado_1.tres" id="4_yivsm"]
 [ext_resource type="Texture2D" uid="uid://5ckcht2ch2mj" path="res://asset/image/monster/クルネード.PNG" id="5_dqdqu"]
 
 [resource]
@@ -21,6 +22,6 @@ base_DEF = 120
 base_MAG = 120
 base_RES = 120
 description = ""
-flavor_text = Array[ExtResource("3_bjo8g")]([])
+flavor_text = Array[ExtResource("3_bjo8g")]([ExtResource("4_yivsm")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

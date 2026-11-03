@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://3r3d0almm6xe"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://3r3d0almm6xe"]
 
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_d1bxd"]
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="3_ttuhw"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="4_enkfy"]
+[ext_resource type="Resource" uid="uid://twudo458rp1c" path="res://resource/flavor_text/monster/spinee_1.tres" id="4_fwtme"]
 [ext_resource type="Resource" uid="uid://dl5j0v1e805u5" path="res://resource/element/風属性.tres" id="4_ja0pr"]
 [ext_resource type="Texture2D" uid="uid://bgxjqwtv1x6v5" path="res://asset/image/monster/クルネ.PNG" id="5_vdam0"]
 
@@ -21,6 +22,6 @@ base_DEF = 100
 base_MAG = 100
 base_RES = 100
 description = ""
-flavor_text = Array[ExtResource("3_d1bxd")]([])
+flavor_text = Array[ExtResource("3_d1bxd")]([ExtResource("4_fwtme")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

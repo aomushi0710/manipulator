@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MonsterData" load_steps=21 format=3 uid="uid://b8hekpmdouxe3"]
+[gd_resource type="Resource" script_class="MonsterData" load_steps=23 format=3 uid="uid://b8hekpmdouxe3"]
 
 [ext_resource type="Script" uid="uid://c3nuh5veon1bs" path="res://src/resource/data/action.gd" id="1_tv135"]
 [ext_resource type="Resource" uid="uid://bgnhyjwahf61a" path="res://resource/action_data/体当たり.tres" id="2_j2dp5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://lqnoslhd80wo" path="res://resource/action_data/フレイム.tres" id="5_4nmso"]
 [ext_resource type="Resource" uid="uid://bsgw243vxjjjb" path="res://resource/action_data/メガフレイム.tres" id="6_r4sfj"]
 [ext_resource type="Resource" uid="uid://eejuk7khv00r" path="res://resource/action_data/ギガフレイム.tres" id="7_3mfee"]
+[ext_resource type="Resource" uid="uid://b0jokma2cb67n" path="res://resource/action_data/延焼連鎖.tres" id="7_dllf5"]
 [ext_resource type="Resource" uid="uid://cq0p1isl1cpli" path="res://resource/action_data/エクスプロージョン.tres" id="8_h1nyj"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="9_cwjrw"]
 [ext_resource type="Resource" uid="uid://dd11c2nvb026s" path="res://resource/monster_form/バニン.tres" id="10_wjrys"]
@@ -49,6 +50,13 @@ unlock_level = 1
 unlock_form = 1
 metadata/_custom_type_script = "uid://c3nuh5veon1bs"
 
+[sub_resource type="Resource" id="Resource_5aca0"]
+script = ExtResource("1_tv135")
+data = ExtResource("7_dllf5")
+unlock_level = 1
+unlock_form = 1
+metadata/_custom_type_script = "uid://c3nuh5veon1bs"
+
 [sub_resource type="Resource" id="Resource_xuqg4"]
 script = ExtResource("1_tv135")
 data = ExtResource("7_3mfee")
@@ -67,6 +75,6 @@ metadata/_custom_type_script = "uid://c3nuh5veon1bs"
 script = ExtResource("13_h5eew")
 id = 3
 evolution_forms = Array[ExtResource("9_cwjrw")]([ExtResource("10_wjrys"), ExtResource("11_bwfqr"), ExtResource("12_82vii")])
-action = Array[ExtResource("1_tv135")]([SubResource("Resource_vog51"), SubResource("Resource_rpfw1"), SubResource("Resource_wrmk5"), SubResource("Resource_0lav4"), SubResource("Resource_xi8a3"), SubResource("Resource_xuqg4"), SubResource("Resource_ecr3x")])
+action = Array[ExtResource("1_tv135")]([SubResource("Resource_vog51"), SubResource("Resource_rpfw1"), SubResource("Resource_wrmk5"), SubResource("Resource_0lav4"), SubResource("Resource_xi8a3"), SubResource("Resource_5aca0"), SubResource("Resource_xuqg4"), SubResource("Resource_ecr3x")])
 coin = 10
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://chcbtdyuufbf3"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://chcbtdyuufbf3"]
 
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_21rkf"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="4_qcjv7"]
+[ext_resource type="Resource" uid="uid://jpmefmnqnwyo" path="res://resource/flavor_text/monster/ghost_1.tres" id="4_ytoco"]
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="8_hd127"]
 [ext_resource type="Resource" uid="uid://cie7fwul7ew3q" path="res://resource/element/無属性.tres" id="9_ka8ya"]
 [ext_resource type="Texture2D" uid="uid://cgmplljwi0qwt" path="res://asset/image/monster/ゴースト.PNG" id="10_bf0qt"]
@@ -21,6 +22,6 @@ base_DEF = 80
 base_MAG = 100
 base_RES = 80
 description = "少し攻撃・素早さ偏重なステータスを持つ。"
-flavor_text = Array[ExtResource("3_21rkf")]([])
+flavor_text = Array[ExtResource("3_21rkf")]([ExtResource("4_ytoco")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"
