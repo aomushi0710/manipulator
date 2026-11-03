@@ -21,7 +21,8 @@ trigger = Array[ExtResource("3_htxax")]([])
 description = "味方全体の[color=violet]RES[/color]を、
 3ターンの間
 1.5倍に強化する。"
-battle_log_message = ""
+battle_log_message = "%s は
+氷の結晶に守られて[color=violet]RES[/color]が上がった！"
 placeholder = 0
 metadata/_custom_type_script = "uid://d2box237wyadg"
 

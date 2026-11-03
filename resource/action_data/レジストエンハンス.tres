@@ -35,7 +35,7 @@ power = 0
 mp = 20
 target = 0
 damage_type = 0
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_4ahcs")]([SubResource("Resource_v25v4")])
 description = "RES強化魔法。
 味方1体のRESを強化する。

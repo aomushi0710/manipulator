@@ -15,7 +15,7 @@ power = 50
 mp = 30
 target = 3
 damage_type = 2
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_kb2rc")]([])
 description = "全体攻撃魔法。広範囲を
 爆発させて敵全体を攻撃する。"

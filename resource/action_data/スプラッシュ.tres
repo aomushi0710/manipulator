@@ -15,7 +15,7 @@ power = 50
 mp = 10
 target = 2
 damage_type = 2
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_gtefk")]([])
 description = "下級攻撃魔法。
 水を生み出して攻撃し、

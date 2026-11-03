@@ -15,7 +15,7 @@ power = 90
 mp = 20
 target = 2
 damage_type = 2
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_6shat")]([])
 description = "上級攻撃魔法。南極の
 氷山を生み出して攻撃し、

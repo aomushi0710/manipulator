@@ -15,7 +15,7 @@ power = 70
 mp = 15
 target = 2
 damage_type = 2
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_sw4v0")]([])
 description = "中級攻撃魔法。強力な
 水を生み出して攻撃し、

@@ -15,7 +15,7 @@ power = 50
 mp = 30
 target = 3
 damage_type = 2
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_m5p23")]([])
 description = "全体攻撃魔法。敵全体に
 荒波を打ち付けて攻撃する。"

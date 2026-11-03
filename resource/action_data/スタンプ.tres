@@ -19,7 +19,7 @@ target = 3
 damage_type = 1
 is_contact_attack = false
 ability = Array[ExtResource("1_ctklp")]([])
-description = ""
+description = "スタンプの衝撃波で、敵全体を攻撃する。"
 metadata/_custom_type_script = "uid://nd5of0c4w8pr"
 
 [sub_resource type="Resource" id="Resource_wxrh4"]
@@ -41,7 +41,7 @@ script = ExtResource("1_qpl7w")
 id = 3
 name = "スタンプ"
 element = Array[ExtResource("2_vopop")]([ExtResource("3_2cnfl")])
-max_chance = 50
+max_chance = 20
 power = 20
 mp = 0
 target = 1

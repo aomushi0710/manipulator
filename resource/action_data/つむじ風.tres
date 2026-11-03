@@ -15,7 +15,7 @@ power = 30
 mp = 0
 target = 1
 damage_type = 2
-touch = false
+is_contact_attack = false
 ability = Array[ExtResource("1_xvx6f")]([])
 description = "目の前の敵につむじ風を
 起こして攻撃する。"
