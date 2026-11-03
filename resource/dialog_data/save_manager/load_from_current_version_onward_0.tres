@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://dhk3stb1inou7"]
+
+[ext_resource type="Script" uid="uid://c3cow7mamavty" path="res://src/resource/static_data/dialog_data.gd" id="2_x1g8v"]
+
+[resource]
+script = ExtResource("2_x1g8v")
+title = "[color=red]ERROR[/color]"
+text = "現在のバージョン ver {0} 以降に
+作成されたデータのため、ロードできません。
+ゲームを終了し、ver {1} 以降のバージョンで起動してください。"
+button_text = Array[String]([])
+dialog_color = Color(0, 0, 0, 1)
+dialog_border_color = Color(1, 1, 1, 1)
+button_color = Array[Color]([])
+metadata/_custom_type_script = "uid://c3cow7mamavty"

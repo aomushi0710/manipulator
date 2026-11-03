@@ -58,7 +58,7 @@ func load_game() -> void:
 	else:
 		path = SAVE_DATA_PATH
 	
-	var dict: Dictionary[StringName, Variant] = _load_file(path)
+	var dict: Dictionary[StringName, Variant] = await _load_file(path)
 	# セーブデータが存在しない時、新規セーブデータ作成
 	if dict.is_empty():
 		save_data = SaveData.new()
@@ -81,7 +81,7 @@ func load_game() -> void:
 	else:
 		save_data = data
 	
-	Global.player_deck = load_deck(0)
+	Global.player_deck = await load_deck(0)
 
 ## [SaveData]を削除します[br]その後新規セーブデータを作成します
 func delete_game() -> void:
@@ -103,7 +103,7 @@ func save_deck(index: int) -> void:
 
 ## 指定したindexのデッキスロットの[Deck]を返します
 func load_deck(index: int) -> Deck:
-	return _dict_to_resource(Deck, _load_file(DECK_SAVE_DATA_PATH % index)) as Deck
+	return _dict_to_resource(Deck, await _load_file(DECK_SAVE_DATA_PATH % index)) as Deck
 
 ## 指定したindexのデッキスロットのセーブデータを削除します
 func delete_deck(index: int) -> void:
@@ -173,6 +173,12 @@ func _load_file(path: String) -> Dictionary[StringName, Variant]:
 	
 	var typed_result: Dictionary[StringName, Variant] = {} ## 型付き辞書に変換された辞書
 	typed_result.assign(result)
+	
+	print(typed_result)
+	if not Global.is_version_older(typed_result.version) and typed_result.version != Global.version:
+		print("test")
+		await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_current_version_onward_0.tres"), [Global.version, typed_result.version])
+		return {}
 	
 	return typed_result
 
