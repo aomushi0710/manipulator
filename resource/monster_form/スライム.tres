@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://b5s6wuaoi84di"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://b5s6wuaoi84di"]
 
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="1_o7yyu"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="2_67a16"]
 [ext_resource type="Resource" uid="uid://cie7fwul7ew3q" path="res://resource/element/無属性.tres" id="2_grwju"]
 [ext_resource type="Texture2D" uid="uid://cioi83ubpqfrg" path="res://asset/image/monster/スライム.PNG" id="3_6p2gh"]
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_kfu2k"]
+[ext_resource type="Resource" uid="uid://ytagey54iffv" path="res://resource/flavor_text/monster/slime_1.tres" id="4_ak0eo"]
 
 [resource]
 script = ExtResource("2_67a16")
@@ -21,6 +22,6 @@ base_DEF = 110
 base_MAG = 80
 base_RES = 90
 description = "最も一般的なモンスター。DEFに少し偏った能力値を持つ。"
-flavor_text = Array[ExtResource("3_kfu2k")]([])
+flavor_text = Array[ExtResource("3_kfu2k")]([ExtResource("4_ak0eo")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://7aq76r73mxo2"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://7aq76r73mxo2"]
 
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="3_a0qsd"]
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_egsmw"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="4_jqp34"]
 [ext_resource type="Resource" uid="uid://bv7ciiu33dpfq" path="res://resource/element/氷属性.tres" id="4_krni7"]
+[ext_resource type="Resource" uid="uid://bdcvd21fr6ho6" path="res://resource/flavor_text/monster/snoof_1.tres" id="4_qdrpn"]
 [ext_resource type="Texture2D" uid="uid://0duqtna0h2tw" path="res://asset/image/monster/スノーフ.PNG" id="5_fb80k"]
 
 [resource]
@@ -21,6 +22,6 @@ base_DEF = 100
 base_MAG = 100
 base_RES = 100
 description = ""
-flavor_text = Array[ExtResource("3_egsmw")]([])
+flavor_text = Array[ExtResource("3_egsmw")]([ExtResource("4_qdrpn")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

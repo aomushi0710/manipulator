@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://dd11c2nvb026s"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://dd11c2nvb026s"]
 
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_xvw8a"]
+[ext_resource type="Resource" uid="uid://cod15jehkqwh8" path="res://resource/flavor_text/monster/burnin_1.tres" id="4_i5pqc"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="4_qxljn"]
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="6_xei2f"]
 [ext_resource type="Resource" uid="uid://dyfst4wxer3yx" path="res://resource/element/火属性.tres" id="7_wmsh4"]
@@ -21,6 +22,6 @@ base_DEF = 80
 base_MAG = 80
 base_RES = 80
 description = ""
-flavor_text = Array[ExtResource("3_xvw8a")]([])
+flavor_text = Array[ExtResource("3_xvw8a")]([ExtResource("4_i5pqc")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

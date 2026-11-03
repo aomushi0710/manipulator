@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://duek2m2m6jnhu"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=9 format=3 uid="uid://duek2m2m6jnhu"]
 
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="4_4vjvk"]
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="4_tp0tg"]
+[ext_resource type="Resource" uid="uid://bocg7sxo4607w" path="res://resource/flavor_text/monster/king_slime_1.tres" id="5_2uk3s"]
 [ext_resource type="Resource" uid="uid://cie7fwul7ew3q" path="res://resource/element/無属性.tres" id="5_8gtlk"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="5_jsnkp"]
+[ext_resource type="Resource" uid="uid://0i2r2djilg5d" path="res://resource/flavor_text/monster/king_slime_2.tres" id="6_t2gvf"]
 [ext_resource type="Resource" uid="uid://djq54l3oqsuo1" path="res://resource/element/光属性.tres" id="6_uhh61"]
 [ext_resource type="Texture2D" uid="uid://ck25esgi5kfjg" path="res://asset/image/monster/キングスライム.PNG" id="7_cesmr"]
 
@@ -22,6 +24,6 @@ base_DEF = 130
 base_MAG = 100
 base_RES = 110
 description = "1段階進化したキング系モンスター。相変わらずDEFに少し偏った能力値を持つ。"
-flavor_text = Array[ExtResource("4_4vjvk")]([])
+flavor_text = Array[ExtResource("4_4vjvk")]([ExtResource("5_2uk3s"), ExtResource("6_t2gvf")])
 flavor_text_weight = Array[int]([1, 1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

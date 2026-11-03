@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://digx0vd8wvuei"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://digx0vd8wvuei"]
 
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_fy2rx"]
+[ext_resource type="Resource" uid="uid://c0e8kyhi6hfax" path="res://resource/flavor_text/monster/pinee_1.tres" id="4_386co"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="4_hr10u"]
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="7_6ctuk"]
 [ext_resource type="Resource" uid="uid://dl5j0v1e805u5" path="res://resource/element/風属性.tres" id="8_0nblg"]
@@ -21,6 +22,6 @@ base_DEF = 80
 base_MAG = 80
 base_RES = 80
 description = ""
-flavor_text = Array[ExtResource("3_fy2rx")]([])
+flavor_text = Array[ExtResource("3_fy2rx")]([ExtResource("4_386co")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"

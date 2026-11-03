@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="MonsterForm" load_steps=6 format=3 uid="uid://c73hr6mavn1td"]
+[gd_resource type="Resource" script_class="MonsterForm" load_steps=7 format=3 uid="uid://c73hr6mavn1td"]
 
 [ext_resource type="Script" uid="uid://cvq84hr01jqh4" path="res://src/resource/static_data/battlelog_data.gd" id="3_2tdf8"]
+[ext_resource type="Resource" uid="uid://4gmpl2kqka6c" path="res://resource/flavor_text/monster/burningal_1.tres" id="4_504f2"]
 [ext_resource type="Script" uid="uid://dws64oarp8yy8" path="res://src/resource/static_data/monster_form.gd" id="4_gcqbq"]
 [ext_resource type="Script" uid="uid://0hbknewd53sh" path="res://src/resource/static_data/element.gd" id="4_wuw2n"]
 [ext_resource type="Resource" uid="uid://dyfst4wxer3yx" path="res://resource/element/火属性.tres" id="5_n2rek"]
@@ -21,6 +22,6 @@ base_DEF = 120
 base_MAG = 120
 base_RES = 120
 description = ""
-flavor_text = Array[ExtResource("3_2tdf8")]([null])
+flavor_text = Array[ExtResource("3_2tdf8")]([ExtResource("4_504f2")])
 flavor_text_weight = Array[int]([1])
 metadata/_custom_type_script = "uid://bt0467jqpfboq"
