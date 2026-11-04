@@ -211,7 +211,7 @@ func set_field() -> void:
 		position = Vector2(1164, 350)
 
 ## SPDゲージが溜まり行動可能になった時の処理
-func spd_max() -> void:
+func _on_spd_bar_gauge_filled() -> void:
 	# picked_action 生成
 	if battle_node.tutorial_mode == false:
 		while len(generated_action) < 4: # 4枠全て技で埋まるまで繰り返す

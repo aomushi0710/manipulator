@@ -130,8 +130,8 @@ func _ready() -> void:
 				space_length = 16
 			
 			AbilityHealing.Status.SPD:
-				gradient.colors = [Color.WHITE, Color.GREEN]
-				status_text = "[color=green]SPD増加量[/color]:"
+				gradient.colors = [Color.WHITE, Color.LIME_GREEN]
+				status_text = "[color=lime_green]SPD増加量[/color]:"
 				space_length = 15
 		
 		match ability.amount_type:
@@ -145,6 +145,22 @@ func _ready() -> void:
 			AbilityHealing.AmountType.MAG:
 				amount_text = "[color=dodger_blue]MAG[/color]の%d%%" % (ability.amount * 100)
 				space_length -= 1 # 全角の数だけ追加で減らす
+			
+			AbilityHealing.AmountType.現在ゲージ割合:
+				amount_text = "現在値の%d%%" % (ability.amount * 100.0)
+				space_length -= 4
+				
+			AbilityHealing.AmountType.最大ゲージ割合:
+				amount_text = "最大値の%d%%" % (ability.amount * 100.0)
+				space_length -= 4
+			
+			AbilityHealing.AmountType.現在ゲージ割合_対象:
+				amount_text = "現在値の%d%%" % (ability.amount * 100.0)
+				space_length -= 4
+				
+			AbilityHealing.AmountType.最大ゲージ割合_対象:
+				amount_text = "最大値の%d%%" % (ability.amount * 100.0)
+				space_length -= 4
 		
 		# ALERT ability.amount_type及びamountによって変わるテキストamount_textの長さによって必要なだけ"0"を入力し、
 		# BBcodeのcolorタグで透明を指定することで半角スペースと同様に扱っている。
@@ -196,7 +212,11 @@ func _ready() -> void:
 		amount_style.border_color = Color.RED
 	
 	elif ability is AbilityExtra: # 連続攻撃
-		gradient.colors = [Color.WHITE, Color.DIM_GRAY]
+		var element_color: Color = ability.action.element[0].color
+		if ability.action.element[0].id == 0:
+			element_color = Color.DIM_GRAY
+		
+		gradient.colors = [Color.WHITE, element_color]
 		# 不要なラベルを隠す
 		for child in get_children():
 			if child.get_class() == "Control":
