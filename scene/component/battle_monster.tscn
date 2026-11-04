@@ -146,3 +146,6 @@ mouse_filter = 1
 
 [node name="SEBattle" parent="." instance=ExtResource("13_c57w8")]
 unique_name_in_owner = true
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="gauge_filled" from="SPDBar" to="." method="_on_spd_bar_gauge_filled"]
