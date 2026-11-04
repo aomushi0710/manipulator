@@ -352,6 +352,8 @@ extra: AbilityExtra = null) -> void:
 	):
 		return
 	
+	monster.spd_bar.value = 0
+	
 	# 発動可能な技かどうかチェック
 	if await action_checker(monster, action) == false:
 		turn_end(monster)
@@ -449,7 +451,7 @@ damage: int = 0) -> void:
 	
 	var target_list := target_setting(monster.is_player, ability, index)
 	
-	for target: BattleMonster in target_list: # 全ての対象について順番に処理
+	for target in target_list: # 全ての対象について順番に処理
 		if ability is AbilityEffect: # 状態異常 TODO 未実装
 			pass
 		
@@ -490,6 +492,21 @@ damage: int = 0) -> void:
 		
 		elif ability is AbilityHealing: # 回復
 			var heal: int ## 回復量
+			var monster_max_gauge: int ## 技を放ったモンスターのゲージ最大値
+			var target_max_gauge: int ## 技の対象モンスターのゲージ最大値
+			match ability.status:
+				AbilityHealing.Status.HP:
+					monster_max_gauge = monster.data.maxHP
+					target_max_gauge = target.data.maxHP
+				
+				AbilityHealing.Status.MP:
+					monster_max_gauge = monster.data.maxMP
+					target_max_gauge = target.data.maxMP
+				
+				AbilityHealing.Status.SPD:
+					monster_max_gauge = SpeedBar.SPD_GAUGE_MAX_VALUE
+					target_max_gauge = SpeedBar.SPD_GAUGE_MAX_VALUE
+			
 			match ability.amount_type:
 				AbilityHealing.AmountType.定数:
 					heal = ability.amount
@@ -499,6 +516,12 @@ damage: int = 0) -> void:
 				
 				AbilityHealing.AmountType.吸収:
 					heal = damage * ability.amount
+				
+				AbilityHealing.AmountType.最大ゲージ割合:
+					heal = monster_max_gauge * ability.amount
+				
+				AbilityHealing.AmountType.最大ゲージ割合_対象:
+					heal = target_max_gauge * ability.amount
 				
 				_:
 					print("不明な列挙型AbilityHealing -> AmountType。0を返します。")
@@ -516,7 +539,8 @@ damage: int = 0) -> void:
 					dialog_text += target.mp_setter(heal, true)
 				
 				AbilityHealing.Status.SPD:
-					pass # TODO 未実装
+					target.spd_bar.value += SpeedBar.SPD_GAUGE_MAX_VALUE * ability.amount
+					dialog_text += "%s は %d%%加速した!" % [target.data.get_monsterform().name, ability.amount * 100]
 			
 			await buttons.dialog_tab.text_setter(BattlelogData.new([dialog_text]))
 		
@@ -583,7 +607,6 @@ func turn_end(monster: BattleMonster) -> void:
 	elif Global.p1_death == true and Global.p2_death == true and Global.p3_death == true:
 		return
 	
-	monster.spd_bar.value = 0
 	for effect: MonsterEffect in monster.effect_list: # エフェクト効果を引き起こす
 		effect.turn_finished()
 	
