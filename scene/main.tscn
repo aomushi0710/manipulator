@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnke3dg7je24c"]
+[gd_scene load_steps=9 format=3 uid="uid://dnke3dg7je24c"]
 
 [ext_resource type="Script" uid="uid://djjemknmkab5p" path="res://src/main.gd" id="1_p1hux"]
 [ext_resource type="PackedScene" uid="uid://b6v2nlkh2ak8j" path="res://scene/game_scene/map.tscn" id="2_of57s"]
 [ext_resource type="Theme" uid="uid://d1ilrudxl0rhs" path="res://asset/theme/default_font_50.tres" id="3_b5f6u"]
 [ext_resource type="PackedScene" uid="uid://q1o1wv3x1yij" path="res://scene/component/pie_chart.tscn" id="4_tqoya"]
-[ext_resource type="Script" uid="uid://nd5of0c4w8pr" path="res://src/resource/static_data/action_data.gd" id="5_k65ib"]
-[ext_resource type="Resource" uid="uid://bgnhyjwahf61a" path="res://resource/action_data/体当たり.tres" id="6_wscrc"]
 [ext_resource type="PackedScene" uid="uid://0n1ixjrprqj2" path="res://scene/component/game_button.tscn" id="7_mswub"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkmox"]
@@ -74,12 +72,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -500.0
-offset_right = 500.0
+offset_left = -250.0
+offset_top = 260.0
+offset_right = 250.0
+offset_bottom = 760.0
 grow_horizontal = 2
 scale = Vector2(1e-05, 1e-05)
-actions = Array[ExtResource("5_k65ib")]([ExtResource("6_wscrc")])
-chances = Array[int]([100])
 
 [node name="Title" type="RichTextLabel" parent="CanvasLayer/UI/Title"]
 unique_name_in_owner = true

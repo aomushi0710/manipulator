@@ -1,7 +1,8 @@
 extends Node
 
 const PIE_CHART_SCALE := Vector2(0.9, 0.9)
-const PIE_CHART_POSITION_Y: float = 285.0
+const PIE_CHART_START_POSITION_Y: float = 260.0
+const PIE_CHART_END_POSITION_Y: float = -40.0
 
 @export var _map_node: Map
 
@@ -66,7 +67,7 @@ func _show_title_animation() -> void:
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	tween.tween_interval(0.5)
-	tween.tween_property(_pie_chart, "position:y", 0.0, 1.0).from(PIE_CHART_POSITION_Y)
+	tween.tween_property(_pie_chart, "position:y", PIE_CHART_END_POSITION_Y, 1.0).from(PIE_CHART_START_POSITION_Y)
 	tween.parallel().tween_property(_pie_chart, "scale", PIE_CHART_SCALE, 1.0).from(Vector2.ZERO)
 	
 	tween.tween_property(_title_label, "modulate:a", 1.0, 1.0).from(0.0)
@@ -83,7 +84,7 @@ func _show_title_animation() -> void:
 func _hide_title_animation() -> void:
 	var tween: Tween = create_tween().set_parallel()
 	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(_pie_chart, "position:y", PIE_CHART_POSITION_Y, 1.0).from(0.0)
+	tween.tween_property(_pie_chart, "position:y", PIE_CHART_START_POSITION_Y, 1.0).from(PIE_CHART_END_POSITION_Y)
 	tween.tween_property(_pie_chart, "scale", Vector2.ZERO, 1.0).from(PIE_CHART_SCALE)
 	
 	tween.tween_property(_ui, "modulate:a", 0.0, 1.0).from(1.0)
