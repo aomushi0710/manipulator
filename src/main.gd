@@ -43,15 +43,20 @@ func _ready() -> void:
 	_map_node.setup_for_title()
 	
 	if Global.player_deck and Global.player_deck.monster[0] and Global.player_deck.monster[0].data:
+		var float_chances: Array[float]
+		float_chances.assign(Global.player_deck.monster[0].chance)
 		_pie_chart.actions = Global.action_to_actiondata(Global.player_deck.monster[0].data.action)
-		_pie_chart.chances = Global.player_deck.monster[0].chance
+		_pie_chart.chances = float_chances
 	else:
 		# モンスターが存在しなかった場合、ダミーのモンスターを生成しそのデータを使用します
 		var dummy_monster := Monster.new()
 		dummy_monster.data = Global.monster_data[1]
 		dummy_monster.random_action_selector()
+		
+		var float_chances: Array[float]
+		float_chances.assign(dummy_monster.chance)
 		_pie_chart.actions = Global.action_to_actiondata(dummy_monster.data.action)
-		_pie_chart.chances = dummy_monster.chance
+		_pie_chart.chances = float_chances
 	
 	if SaveManager.is_new_data:
 		_continue_button.disabled = true

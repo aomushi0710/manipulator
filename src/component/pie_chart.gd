@@ -7,7 +7,7 @@ const ELEMENTS_FONT_SIZE: int = 30 ## フォントサイズ
 const BORDER_WIDTH: float = 2.0 ## ボーダーの太さ
 
 @export var actions: Array[ActionData]
-@export var chances: Array[int]
+@export var chances: Array[float]
 var color_list: Array[Color] = [Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK] ## これまでの色の履歴を保持
 
 var border_color: Color ## ボーダーの色
@@ -34,10 +34,10 @@ func _draw() -> void:
 	for child in get_children(): # label削除
 		child.queue_free()
 	
-	var sum_chance: int = 0 ## それまでの合計の確率
-	for i: int in chances:
+	var sum_chance: float = 0.0 ## それまでの合計の確率
+	for i in chances:
 		sum_chance += i
-	if sum_chance == 100:
+	if roundf(sum_chance) == 100:
 		border_color = Color.GOLD
 	else:
 		border_color = Color.WHITE
@@ -59,7 +59,13 @@ func _draw() -> void:
 		var angle: float = deg_to_rad(current_angle + previous_angle) ## 合計角度
 		var mid_angle: float = angle - deg_to_rad(current_angle / 2.0) ## 角度の中心
 		var angle_point := Vector2(cos(mid_angle), sin(mid_angle)) * radius
-		var text: String = "%s\n[b]%d%%[/b]" % [actions[i].name, chances[i]] ## 技の名前と確率
+		
+		var text: String ## 技の名前と確率
+		if is_equal_approx(chances[i], round(chances[i])):
+			text = "%s\n[b]%d%%[/b]" % [actions[i].name, int(chances[i])]
+		else:
+			text = "%s\n[b]%.2f%%[/b]" % [actions[i].name, chances[i]]
+		
 		## フォントサイズと技名の長さから計算
 		var label_size := Vector2(len(actions[i].name) * ELEMENTS_FONT_SIZE * 1.1, ELEMENTS_FONT_SIZE * 3.2)
 		var label_position := center - (label_size / 2) + (angle_point / 1.2) ## labelの位置

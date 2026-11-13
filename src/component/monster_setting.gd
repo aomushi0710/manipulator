@@ -183,8 +183,10 @@ callback: Callable = Callable()) -> void:
 
 ## 選択中の技出現確率円グラフ更新関数
 func pie_chart_update() -> void:
+	var float_chances: Array[float]
+	float_chances.assign(chances)
 	pie_chart.actions = Global.action_to_actiondata(actions)
-	pie_chart.chances = chances
+	pie_chart.chances = float_chances
 	pie_chart.queue_redraw()
 
 ## 全ての[Action]を[ActionSettingButton]として追加する関数
