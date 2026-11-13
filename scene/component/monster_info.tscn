@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj7cpg3qxjq0p"]
+
+[ext_resource type="Theme" uid="uid://d1ilrudxl0rhs" path="res://asset/theme/default_font_50.tres" id="1_5ilyc"]
+[ext_resource type="PackedScene" uid="uid://q1o1wv3x1yij" path="res://scene/component/pie_chart.tscn" id="2_doa3p"]
+[ext_resource type="Script" uid="uid://bj2tl7c4jf0ll" path="res://src/component/monster_info.gd" id="2_plmn7"]
+[ext_resource type="PackedScene" uid="uid://bvbgk42kbwv54" path="res://scene/component/monster_icon.tscn" id="3_5ilyc"]
+[ext_resource type="Resource" uid="uid://br3qcigs0mtjj" path="res://resource/monster_data/スライム.tres" id="4_doa3p"]
+[ext_resource type="PackedScene" uid="uid://cqgg7lvejtmh7" path="res://scene/component/action_button.tscn" id="6_plmn7"]
+
+[node name="MonsterInfo" type="Control"]
+custom_minimum_size = Vector2(1104, 717.6)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1104.0
+offset_bottom = 717.6
+script = ExtResource("2_plmn7")
+
+[node name="MonsterInfoContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 684.0
+offset_bottom = 370.0
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("1_5ilyc")
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="ExpectedContainer" type="VBoxContainer" parent="MonsterInfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="ExpectedPieChartLabel" type="RichTextLabel" parent="MonsterInfoContainer/ExpectedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "本来の出現確率"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExpectedPieChart" parent="MonsterInfoContainer/ExpectedContainer" instance=ExtResource("2_doa3p")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="MonsterIcon" parent="MonsterInfoContainer" instance=ExtResource("3_5ilyc")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+data = ExtResource("4_doa3p")
+
+[node name="ActualContainer" type="VBoxContainer" parent="MonsterInfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="ExpectedPieChartLabel" type="RichTextLabel" parent="MonsterInfoContainer/ActualContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "現在の出現確率"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActualPieChart" parent="MonsterInfoContainer/ActualContainer" instance=ExtResource("2_doa3p")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="ActionContainer" type="VBoxContainer" parent="MonsterInfoContainer/ActualContainer"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+
+[node name="ActionButton" parent="MonsterInfoContainer/ActualContainer/ActionContainer" instance=ExtResource("6_plmn7")]
+layout_mode = 2
+mouse_default_cursor_shape = 0
+
+[node name="ActionButton2" parent="MonsterInfoContainer/ActualContainer/ActionContainer" instance=ExtResource("6_plmn7")]
+layout_mode = 2
+mouse_default_cursor_shape = 0
+
+[node name="ActionButton3" parent="MonsterInfoContainer/ActualContainer/ActionContainer" instance=ExtResource("6_plmn7")]
+layout_mode = 2
+mouse_default_cursor_shape = 0
+
+[node name="ActionButton4" parent="MonsterInfoContainer/ActualContainer/ActionContainer" instance=ExtResource("6_plmn7")]
+layout_mode = 2
+mouse_default_cursor_shape = 0
