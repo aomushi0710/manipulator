@@ -72,10 +72,10 @@ func _on_back_button_up() -> void:
 
 func _on_buy_button_up() -> void:
 	if SaveManager.save_data.coin < selected_item.price:
-		await DialogManager.set_dialog(preload("res://resource/dialog_data/shop/coin_shortage.tres"))
+		await DialogManager.set_text_dialog(preload("res://resource/dialog_data/shop/coin_shortage.tres"))
 		DialogManager.hide_dialog()
 	else:
-		var selected_index: int = await DialogManager.set_dialog(preload("res://resource/dialog_data/shop/purchase_item_1.tres"), [selected_item.item.name, selected_item.item.get_level() + 1])
+		var selected_index: int = await DialogManager.set_text_dialog(preload("res://resource/dialog_data/shop/purchase_item_1.tres"), [selected_item.item.name, selected_item.item.get_level() + 1])
 		if selected_index == 0:
 			# アイテム情報もセーブするので、ここではセーブしない
 			SaveManager.save_data.coin -= selected_item.price
@@ -88,5 +88,5 @@ func _on_buy_button_up() -> void:
 			SaveManager.save_game()
 			update(-selected_item.price)
 			
-			await DialogManager.set_dialog(preload("res://resource/dialog_data/shop/purchase_item_2.tres"), [selected_item.item.name, selected_item.item.get_level()])
+			await DialogManager.set_text_dialog(preload("res://resource/dialog_data/shop/purchase_item_2.tres"), [selected_item.item.name, selected_item.item.get_level()])
 		DialogManager.hide_dialog()

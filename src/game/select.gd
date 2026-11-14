@@ -209,7 +209,7 @@ func _on_back_button_up():
 	match mode:
 		Mode.DECK:
 			if Global.player_deck.has_empty_slot():
-				await DialogManager.set_dialog(preload("res://resource/dialog_data/select/deck_empty_slot.tres"))
+				await DialogManager.set_text_dialog(preload("res://resource/dialog_data/select/deck_empty_slot.tres"))
 				DialogManager.hide_dialog()
 				return
 			
@@ -225,7 +225,7 @@ func _on_back_button_up():
 			mode = Mode.DECK
 		
 		Mode.STATUS: # キャラ選択に戻す
-			var selected_index: int = await DialogManager.set_dialog(preload("res://resource/dialog_data/select/go_back_without_save.tres"))
+			var selected_index: int = await DialogManager.set_text_dialog(preload("res://resource/dialog_data/select/go_back_without_save.tres"))
 			if selected_index == 0:
 				mode = Mode.MONSTER_SELECT
 			DialogManager.hide_dialog()
@@ -244,7 +244,7 @@ func _on_confirm_button_up():
 			for i: int in monster_setting.chances:
 				sum_chance += i
 			if sum_chance != 100:
-				await DialogManager.set_dialog(preload("res://resource/dialog_data/select/not_100_chance.tres"))
+				await DialogManager.set_text_dialog(preload("res://resource/dialog_data/select/not_100_chance.tres"))
 				DialogManager.hide_dialog()
 				return
 			

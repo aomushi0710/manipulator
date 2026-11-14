@@ -47,50 +47,50 @@ func _on_back_button_up() -> void:
 
 func _on_save_button_up(index: int) -> void:
 	if Global.player_deck.has_empty_slot():
-		await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/save_with_empty_slot.tres"))
+		await DialogManager.set_text_dialog(preload("res://resource/dialog_data/save_manager/save_with_empty_slot.tres"))
 		DialogManager.hide_dialog()
 		return
 	
 	SaveManager.save_deck(index)
 	_update_ui(deck_slot_container.get_child(index - 1))
 	
-	await DialogManager.set_dialog(preload("res://resource/dialog_data/common/save_complete.tres"))
+	await DialogManager.set_text_dialog(preload("res://resource/dialog_data/common/save_complete.tres"))
 	DialogManager.hide_dialog()
 
 
 func _on_load_button_up(index: int) -> void:
 	match SaveManager.validate_deck(all_decks[index]):
 		SaveManager.DeckValidationResult.OUTDATED_VERSION_DATA:
-			await  DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_outdated_version_data.tres"), [SaveManager.MIN_SUPPORTED_VERSION])
+			await  DialogManager.set_text_dialog(preload("res://resource/dialog_data/save_manager/load_from_outdated_version_data.tres"), [SaveManager.MIN_SUPPORTED_VERSION])
 		
 		SaveManager.DeckValidationResult.FUTURE_VERSION_DATA:
-			await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_current_version_onward.tres"), [Global.version])
+			await DialogManager.set_text_dialog(preload("res://resource/dialog_data/save_manager/load_from_current_version_onward.tres"), [Global.version])
 		
 		SaveManager.DeckValidationResult.BETA_DATA_IN_MASTER:
-			await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_beta_in_master.tres"))
+			await DialogManager.set_text_dialog(preload("res://resource/dialog_data/save_manager/load_from_beta_in_master.tres"))
 		
 		SaveManager.DeckValidationResult.MASTER_DATA_IN_BETA:
-			await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_master_in_beta.tres"))
+			await DialogManager.set_text_dialog(preload("res://resource/dialog_data/save_manager/load_from_master_in_beta.tres"))
 		
 		SaveManager.DeckValidationResult.INVALID_MONSTER_COUNT:
-			await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_invalid_monster_count_data.tres"))
+			await DialogManager.set_text_dialog(preload("res://resource/dialog_data/save_manager/load_from_invalid_monster_count_data.tres"))
 		
 		SaveManager.DeckValidationResult.DUPLICATE_MONSTER_ID:
-			await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_duplicate_monster_id_data.tres"))
+			await DialogManager.set_text_dialog(preload("res://resource/dialog_data/save_manager/load_from_duplicate_monster_id_data.tres"))
 		
 		SaveManager.DeckValidationResult.OK:
 			Global.player_deck = all_decks[index]
 			_update_ui(player_deck_slot)
-			await DialogManager.set_dialog(preload("res://resource/dialog_data/common/load_complete.tres"))
+			await DialogManager.set_text_dialog(preload("res://resource/dialog_data/common/load_complete.tres"))
 	
 	DialogManager.hide_dialog()
 
 
 func _on_delete_button_up(index: int) -> void:
-	var selected_index: int = await DialogManager.set_dialog(preload("res://resource/dialog_data/deck_select/delete_deck_slot_1.tres"), [index])
+	var selected_index: int = await DialogManager.set_text_dialog(preload("res://resource/dialog_data/deck_select/delete_deck_slot_1.tres"), [index])
 	if selected_index == 0:
 		SaveManager.delete_deck(index)
 		_update_ui(deck_slot_container.get_child(index - 1))
-		await DialogManager.set_dialog(preload("res://resource/dialog_data/deck_select/delete_deck_slot_2.tres"), [index])
+		await DialogManager.set_text_dialog(preload("res://resource/dialog_data/deck_select/delete_deck_slot_2.tres"), [index])
 	
 	DialogManager.hide_dialog()

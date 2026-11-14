@@ -381,7 +381,7 @@ func _on_chance_value_changed(value: int) -> void:
 	sum_chance += value
 	
 	if sum_chance > 100: # 100%を越える場合、元の値に差し戻し
-		await DialogManager.set_dialog(preload("res://resource/dialog_data/monster_setting/chance_exceed_100.tres"))
+		await DialogManager.set_text_dialog(preload("res://resource/dialog_data/monster_setting/chance_exceed_100.tres"))
 		value = previous_value # 元の値に戻す
 		DialogManager.hide_dialog()
 	else:

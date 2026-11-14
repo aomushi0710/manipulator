@@ -103,11 +103,11 @@ func _on_new_game_button_up() -> void:
 	if SaveManager.is_new_data:
 		_change_to_map_scene()
 	else:
-		var selected_index: int = await DialogManager.set_dialog(preload("res://resource/dialog_data/main/delete_save_data_1.tres"))
+		var selected_index: int = await DialogManager.set_text_dialog(preload("res://resource/dialog_data/main/delete_save_data_1.tres"))
 		if selected_index == 1:
 			SaveManager.delete_game()
 			
-			await DialogManager.set_dialog(preload("res://resource/dialog_data/main/delete_save_data_2.tres"))
+			await DialogManager.set_text_dialog(preload("res://resource/dialog_data/main/delete_save_data_2.tres"))
 			DialogManager.hide_dialog()
 			
 			_change_to_map_scene()
@@ -116,7 +116,7 @@ func _on_new_game_button_up() -> void:
 
 
 func _on_credit_button_up() -> void:
-	await DialogManager.set_dialog(preload("res://resource/dialog_data/main/credit.tres"))
+	await DialogManager.set_text_dialog(preload("res://resource/dialog_data/main/credit.tres"))
 	DialogManager.hide_dialog()
 
 

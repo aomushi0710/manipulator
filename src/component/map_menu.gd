@@ -65,7 +65,7 @@ func _on_shop_button_up() -> void:
 
 func _on_save_button_up() -> void:
 	SaveManager.save_game()
-	await DialogManager.set_dialog(preload("res://resource/dialog_data/common/save_complete.tres"))
+	await DialogManager.set_text_dialog(preload("res://resource/dialog_data/common/save_complete.tres"))
 	DialogManager.hide_dialog()
 
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv82bvosv8k2e"]
+[gd_scene load_steps=7 format=3 uid="uid://cv82bvosv8k2e"]
 
 [ext_resource type="Script" uid="uid://ihhhui2rpk8s" path="res://src/system/dialog.gd" id="1_n5unw"]
 [ext_resource type="Theme" uid="uid://d1ilrudxl0rhs" path="res://asset/theme/default_font_50.tres" id="2_5d0ui"]
 [ext_resource type="Texture2D" uid="uid://b5nrfwe5e6q35" path="res://asset/image/S4_logo.PNG" id="3_r80jm"]
+[ext_resource type="PackedScene" uid="uid://bj7cpg3qxjq0p" path="res://scene/component/monster_info.tscn" id="4_5d0ui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38lea"]
 bg_color = Color(0, 0, 0, 1)
@@ -25,7 +26,6 @@ thickness = 5
 [node name="Dialog" type="CanvasLayer"]
 process_mode = 3
 layer = 100
-visible = false
 script = ExtResource("1_n5unw")
 
 [node name="ScreenOverlay" type="ColorRect" parent="."]
@@ -47,7 +47,6 @@ offset_right = 480.0
 offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 0.1)
 pivot_offset = Vector2(480, 270)
 theme = ExtResource("2_5d0ui")
 theme_override_styles/panel = SubResource("StyleBoxFlat_38lea")
@@ -65,7 +64,6 @@ theme_override_constants/separation = 10
 
 [node name="Title" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 bbcode_enabled = true
 text = "タイトル"
@@ -75,7 +73,6 @@ vertical_alignment = 1
 
 [node name="Border" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_buau7")
 
@@ -86,7 +83,6 @@ size_flags_vertical = 3
 
 [node name="Background" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/TextArea"]
 unique_name_in_owner = true
-visible = false
 self_modulate = Color(0.5, 0.5, 0.5, 1)
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
@@ -96,9 +92,8 @@ texture = ExtResource("3_r80jm")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Text" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/TextArea"]
+[node name="Label" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/TextArea"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -107,8 +102,12 @@ autowrap_mode = 1
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MonsterInfo" parent="PanelContainer/MarginContainer/VBoxContainer/TextArea" instance=ExtResource("4_5d0ui")]
 unique_name_in_owner = true
 visible = false
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20

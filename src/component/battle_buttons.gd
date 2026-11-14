@@ -503,9 +503,9 @@ func target_button_setting() -> void:
 func _on_escape_button_up() -> void: # 逃げるボタン処理 TODO 逃げられないバトル用の処理なども作る
 	var selected_index: int = -1
 	if battle_node.tutorial_mode == true:
-		selected_index = await DialogManager.set_dialog(preload("res://resource/dialog_data/battle/tutorial_end.tres"))
+		selected_index = await DialogManager.set_text_dialog(preload("res://resource/dialog_data/battle/tutorial_end.tres"))
 	else:
-		selected_index = await DialogManager.set_dialog(preload("res://resource/dialog_data/battle/battle_escape.tres"))
+		selected_index = await DialogManager.set_text_dialog(preload("res://resource/dialog_data/battle/battle_escape.tres"))
 	
 	if selected_index == 0:
 		battle_finished()
