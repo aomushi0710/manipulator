@@ -1,6 +1,7 @@
 class_name BattleMonster
 extends TextureButton
 
+signal switch_reserved ## ターン終了後に行われる交代が、予約された時発行されます
 signal monster_ready ## モンスターが行動可能になった時発行されます
 @warning_ignore("unused_signal") # 親ノードがこのシグナルを発行するため
 signal mp_used(amount: int) ## モンスターがMPを使用した時発行されます
@@ -26,6 +27,10 @@ var text_setter_callback: Callable ## dialogのtext_setter
 var chance_range: Array[int] ## 抽選に用いる範囲
 var generated_action: Array[Action] ## 乱数による抽選で生成された技の配列
 var available_action: Array[Action] ## 実際に表示される選択可能な技の配列
+## バトル中に抽選された技の回数を記録しておく配列[br]
+## indexは[member MonsterData.action]と同期させる[br]
+## [member is_player]が[code]true[/code]の場合は技の生成時に記録され、[code]false[/code]の場合は技の発動時に記録される
+var generated_action_log: Array[int]
 
 @onready var monster_icon := %MonsterIcon as MonsterIcon
 @onready var name_label := %CenteredWrapper/Name as RichTextLabel
@@ -86,6 +91,9 @@ func setup() -> void:
 			range -= 1
 		sum_range += range # ex.1:10% 2:20% 3:30% 4:40%なら、[9,29,59.99]となり、
 		chance_range.append(sum_range) # 乱数0~9の範囲で1が、10~29で2、30~59で3、60~99で4
+	
+	generated_action_log.resize(data.data.action.size())
+	generated_action_log.fill(0)
 
 ## 死亡処理
 func dead(player_monster: BattleMonster, enemy_monster: BattleMonster) -> void:
@@ -219,6 +227,9 @@ func _on_spd_bar_gauge_filled() -> void:
 			for i in len(chance_range):
 				if result <= chance_range[i]: # 乱数に応じて出現する技を決定
 					generated_action.append(data.data.action[i])
+					# プレイヤーのモンスターは生成された時点で技を記録する
+					if is_player:
+						generated_action_log[i] += 1
 					break # 対応する技があったら終了
 	
 	var generated_action_size: int = generated_action.size()
@@ -371,3 +382,14 @@ func damage_effect(dmg: int, type: int) -> void:
 	var font_size: int = 30 + 10 * len(str(dmg)) ## ダメージの桁数からサイズを求める
 	text.text = "[font_size=%d][b][i]%d[/i][/b][/font_size]" % [font_size, dmg]
 	add_child(text)
+
+
+func _on_button_up() -> void:
+	if is_player:
+		var selected_index: int = await DialogManager.set_monster_dialog(preload("res://resource/dialog_data/battle/battle_monster_info_player.tres"), self)
+		if selected_index == 1:
+			switch_reserved.emit()
+	else:
+		await DialogManager.set_monster_dialog(preload("res://resource/dialog_data/battle/battle_monster_info_enemy.tres"), self)
+	
+	DialogManager.hide_dialog()
