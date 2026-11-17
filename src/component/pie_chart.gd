@@ -16,18 +16,28 @@ var font : Font = ThemeDB.fallback_font ## 元のフォント
 
 ## グラフの切れ端を描く関数
 func draw_slice(center: Vector2, radius: float, angle_from: float, angle_to: float, color: Color) -> void:
-	var nb_points: int = round((angle_to-angle_from)/5)
-	var outer_arc: Array[Vector2] = []
-	var inner_arc: Array[Vector2] = []
-
+	var angle_diff := angle_to - angle_from
+	if radius <= 0.0 or angle_diff <= 0.0:
+		return
 	
-	inner_arc.push_back(center)
+	var nb_points := int(round(angle_diff / 5.0))
+	if nb_points < 1:
+		return
+	
+	var total_point := nb_points + 2
+	var points := PackedVector2Array()
+	points.resize(total_point)
+	points[0] = center
+	
+	var rad_from: float = deg_to_rad(angle_from)
+	var rad_diff: float = deg_to_rad(angle_diff)
+	var inv_nb: float = 1.0 / nb_points
 	
 	for i in range(nb_points + 1):
-		var angle_point: float = deg_to_rad(angle_from + i * (angle_to - angle_from) / nb_points)
-		outer_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
-	
-	draw_colored_polygon(inner_arc + outer_arc, color)
+		var current_rad: float = rad_from + i * rad_diff * inv_nb
+		points[i + 1] = center + Vector2.from_angle(current_rad) * radius
+
+	draw_colored_polygon(points, color)
 
 
 func _draw() -> void:
@@ -43,8 +53,8 @@ func _draw() -> void:
 		border_color = Color.WHITE
 	color_list.clear()
 	
-	var radius: float = size.x / 4.0
 	var center: Vector2 = size / 2.0
+	var radius: float = center.x
 	var previous_angle: float = 270 ## 円グラフの開始地点が上となるように
 	var separation_lines_parameters: Array = []
 	for i in len(actions): # 技の数だけ繰り返す
