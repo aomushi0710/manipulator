@@ -72,8 +72,8 @@ func load_game() -> void:
 		can_autosave = false
 		save_data = SaveData.new()
 		
-		await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_current_version_onward.tres"), [Global.version])
-		await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_current_version_onward_2.tres"))
+		await DialogManager.set_text_dialog(preload("res://resource/dialog_data/save_manager/load_from_current_version_onward.tres"), [Global.version])
+		await DialogManager.set_text_dialog(preload("res://resource/dialog_data/save_manager/load_from_current_version_onward_2.tres"))
 		DialogManager.hide_dialog()
 	
 	# TODO 過去のバージョンのデータだった場合、互換性があるかチェックし、
@@ -174,9 +174,7 @@ func _load_file(path: String) -> Dictionary[StringName, Variant]:
 	var typed_result: Dictionary[StringName, Variant] = {} ## 型付き辞書に変換された辞書
 	typed_result.assign(result)
 	
-	print(typed_result)
 	if not Global.is_version_older(typed_result.version) and typed_result.version != Global.version:
-		print("test")
 		await DialogManager.set_dialog(preload("res://resource/dialog_data/save_manager/load_from_current_version_onward_0.tres"), [Global.version, typed_result.version])
 		return {}
 	

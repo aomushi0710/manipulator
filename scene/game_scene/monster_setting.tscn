@@ -1141,10 +1141,6 @@ metadata/help_text = "ランダムに技とその出現確率を登録します�
 
 [node name="PieChart" parent="Control/MonsterSetting" instance=ExtResource("16_oeulo")]
 unique_name_in_owner = true
-offset_left = 1000.0
-offset_top = 70.0
-offset_right = 2000.0
-offset_bottom = 520.0
 
 [node name="ActionScrollContainer" type="ScrollContainer" parent="Control/MonsterSetting"]
 unique_name_in_owner = true
@@ -1172,6 +1168,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 18
+offset_left = 1250.0
+offset_top = 50.0
+offset_right = 1750.0
+offset_bottom = 550.0
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3

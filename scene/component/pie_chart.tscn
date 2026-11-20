@@ -6,9 +6,9 @@
 [node name="PieChart" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1000.0
-offset_bottom = 450.0
-pivot_offset = Vector2(500, 225)
+offset_right = 500.0
+offset_bottom = 500.0
+pivot_offset = Vector2(250, 250)
 mouse_filter = 2
 theme = ExtResource("1_6hkke")
 script = ExtResource("2_1uolw")

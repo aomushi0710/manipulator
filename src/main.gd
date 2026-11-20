@@ -1,7 +1,8 @@
 extends Node
 
 const PIE_CHART_SCALE := Vector2(0.9, 0.9)
-const PIE_CHART_POSITION_Y: float = 285.0
+const PIE_CHART_START_POSITION_Y: float = 260.0
+const PIE_CHART_END_POSITION_Y: float = -40.0
 
 @export var _map_node: Map
 
@@ -42,15 +43,20 @@ func _ready() -> void:
 	_map_node.setup_for_title()
 	
 	if Global.player_deck and Global.player_deck.monster[0] and Global.player_deck.monster[0].data:
+		var float_chances: Array[float]
+		float_chances.assign(Global.player_deck.monster[0].chance)
 		_pie_chart.actions = Global.action_to_actiondata(Global.player_deck.monster[0].data.action)
-		_pie_chart.chances = Global.player_deck.monster[0].chance
+		_pie_chart.chances = float_chances
 	else:
 		# モンスターが存在しなかった場合、ダミーのモンスターを生成しそのデータを使用します
 		var dummy_monster := Monster.new()
 		dummy_monster.data = Global.monster_data[1]
 		dummy_monster.random_action_selector()
+		
+		var float_chances: Array[float]
+		float_chances.assign(dummy_monster.chance)
 		_pie_chart.actions = Global.action_to_actiondata(dummy_monster.data.action)
-		_pie_chart.chances = dummy_monster.chance
+		_pie_chart.chances = float_chances
 	
 	if SaveManager.is_new_data:
 		_continue_button.disabled = true
@@ -66,7 +72,7 @@ func _show_title_animation() -> void:
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	tween.tween_interval(0.5)
-	tween.tween_property(_pie_chart, "position:y", 0.0, 1.0).from(PIE_CHART_POSITION_Y)
+	tween.tween_property(_pie_chart, "position:y", PIE_CHART_END_POSITION_Y, 1.0).from(PIE_CHART_START_POSITION_Y)
 	tween.parallel().tween_property(_pie_chart, "scale", PIE_CHART_SCALE, 1.0).from(Vector2.ZERO)
 	
 	tween.tween_property(_title_label, "modulate:a", 1.0, 1.0).from(0.0)
@@ -83,7 +89,7 @@ func _show_title_animation() -> void:
 func _hide_title_animation() -> void:
 	var tween: Tween = create_tween().set_parallel()
 	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(_pie_chart, "position:y", PIE_CHART_POSITION_Y, 1.0).from(0.0)
+	tween.tween_property(_pie_chart, "position:y", PIE_CHART_START_POSITION_Y, 1.0).from(PIE_CHART_END_POSITION_Y)
 	tween.tween_property(_pie_chart, "scale", Vector2.ZERO, 1.0).from(PIE_CHART_SCALE)
 	
 	tween.tween_property(_ui, "modulate:a", 0.0, 1.0).from(1.0)
@@ -97,11 +103,11 @@ func _on_new_game_button_up() -> void:
 	if SaveManager.is_new_data:
 		_change_to_map_scene()
 	else:
-		var selected_index: int = await DialogManager.set_dialog(preload("res://resource/dialog_data/main/delete_save_data_1.tres"))
+		var selected_index: int = await DialogManager.set_text_dialog(preload("res://resource/dialog_data/main/delete_save_data_1.tres"))
 		if selected_index == 1:
 			SaveManager.delete_game()
 			
-			await DialogManager.set_dialog(preload("res://resource/dialog_data/main/delete_save_data_2.tres"))
+			await DialogManager.set_text_dialog(preload("res://resource/dialog_data/main/delete_save_data_2.tres"))
 			DialogManager.hide_dialog()
 			
 			_change_to_map_scene()
@@ -110,7 +116,7 @@ func _on_new_game_button_up() -> void:
 
 
 func _on_credit_button_up() -> void:
-	await DialogManager.set_dialog(preload("res://resource/dialog_data/main/credit.tres"))
+	await DialogManager.set_text_dialog(preload("res://resource/dialog_data/main/credit.tres"))
 	DialogManager.hide_dialog()
 
 

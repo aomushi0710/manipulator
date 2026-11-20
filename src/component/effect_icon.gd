@@ -23,7 +23,7 @@ func _ready() -> void:
 
 ## ボタンが押された時、エフェクト説明文を出す関数
 func _on_button_up() -> void:
-	await DialogManager.set_dialog(preload("res://resource/dialog_data/common/dynamic.tres"), [effect.effect.name, effect.description])
+	await DialogManager.set_text_dialog(preload("res://resource/dialog_data/common/dynamic.tres"), [effect.effect.name, effect.description])
 	DialogManager.hide_dialog()
 
 ## [member MonsterEffect.turn]が変更された時、UIの表示を更新します

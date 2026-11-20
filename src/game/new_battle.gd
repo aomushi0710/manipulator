@@ -127,11 +127,10 @@ func monster_setup() -> void:
 						monster.spd_bar.hide()
 					
 					player_deck.append(monster)
-					monster.button_up.connect(monster_button_up.bind(monster.index))
+					monster.switch_reserved.connect(_on_battle_monster_switch_reserved.bind(monster.index))
 				
 				Global.enemy_deck:
 					monster.is_player = false
-					monster.mouse_filter = Control.MOUSE_FILTER_IGNORE
 					monster.name = "Enemy%d" % (i + 1)
 					
 					if i == 0:
@@ -231,7 +230,9 @@ func monster_ready(is_player: bool) -> void:
 		var action_index: int = enemy_target_select(action)
 		
 		command_selected(enemy_monster, action.data, action_index)
-		enemy_monster.available_action.remove_at(button_index)
+		enemy_monster.generated_action.remove_at(button_index)
+		# 敵のモンスターは技を発動してはじめてその技が抽選されていたことを知るので、このタイミングで記録する
+		enemy_monster.generated_action_log[enemy_monster.data.data.action.find(action)] += 1
 
 ## [param resource]([code]Action[/code]及び[code]Ability[/code])を基に[br]
 ##敵が行うターゲット選択を自動で行い、そのindexを返す関数
@@ -322,12 +323,13 @@ func _on_change_button_up() -> void:
 		changed.emit()
 
 ## モンスターのボタンを押して、ターン終了後にフィールドに立つモンスターのindexと画像を設定します
-func monster_button_up(i: int) -> void:
-	if player_deck[i].is_died == false: # 生きてたら
+func _on_battle_monster_switch_reserved(i: int) -> void:
+	if not player_deck[i].is_died:
 		player_next_index = i
+		buttons.change_button.data = Global.player_deck.monster[player_next_index].data
+		buttons.change_button.form = Global.player_deck.monster[player_next_index].form
+		
 		if player_monster.index != player_next_index:
-			buttons.change_button.data = Global.player_deck.monster[player_next_index].data
-			buttons.change_button.form = Global.player_deck.monster[player_next_index].form
 			changed.emit()
 
 ## buttonスクリプト接続用関数

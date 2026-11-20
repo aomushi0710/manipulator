@@ -183,8 +183,10 @@ callback: Callable = Callable()) -> void:
 
 ## 選択中の技出現確率円グラフ更新関数
 func pie_chart_update() -> void:
+	var float_chances: Array[float]
+	float_chances.assign(chances)
 	pie_chart.actions = Global.action_to_actiondata(actions)
-	pie_chart.chances = chances
+	pie_chart.chances = float_chances
 	pie_chart.queue_redraw()
 
 ## 全ての[Action]を[ActionSettingButton]として追加する関数
@@ -379,7 +381,7 @@ func _on_chance_value_changed(value: int) -> void:
 	sum_chance += value
 	
 	if sum_chance > 100: # 100%を越える場合、元の値に差し戻し
-		await DialogManager.set_dialog(preload("res://resource/dialog_data/monster_setting/chance_exceed_100.tres"))
+		await DialogManager.set_text_dialog(preload("res://resource/dialog_data/monster_setting/chance_exceed_100.tres"))
 		value = previous_value # 元の値に戻す
 		DialogManager.hide_dialog()
 	else:

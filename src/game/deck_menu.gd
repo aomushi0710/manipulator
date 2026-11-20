@@ -94,11 +94,11 @@ func _on_auto_fill_button_up() -> void:
 
 
 func _on_reset_button_up() -> void:
-	var selected_index: int = await DialogManager.set_dialog(preload("res://resource/dialog_data/deck_menu/reset_current_deck_1.tres"))
+	var selected_index: int = await DialogManager.set_text_dialog(preload("res://resource/dialog_data/deck_menu/reset_current_deck_1.tres"))
 	if selected_index == 0:
 		Global.player_deck = Deck.new()
 		evolution_form_changed.emit(Monster.Form.第一形態)
-		await DialogManager.set_dialog(preload("res://resource/dialog_data/deck_menu/reset_current_deck_2.tres"))
+		await DialogManager.set_text_dialog(preload("res://resource/dialog_data/deck_menu/reset_current_deck_2.tres"))
 	DialogManager.hide_dialog()
 
 ## モンスターのアイコンがクリックされた時の処理
