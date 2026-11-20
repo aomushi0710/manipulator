@@ -11,6 +11,8 @@
 
 [ポートフォリオサイト](https://www.aomushi0710.com/manipulator/)
 
+[説明スライドをダウンロード](https://github.com/aomushi0710/manipulator/releases/download/v0.1.0-docs.1/manipulator.pptx) パワーポイント形式でゲームの概要や技術的なこだわりを紹介しています。
+
 ## 基本情報
 <table>
   <tr>
