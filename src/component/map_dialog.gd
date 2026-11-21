@@ -122,11 +122,11 @@ func display_dialog(data: MapDialogData) -> int:
 			_player_deck_monster_container.add_child(icon)
 			icon.data = monster.data
 		
+		Global.enemy_deck = data.deck.duplicate(true) as Deck
 		_enemy_deck_name_label.text = "相手　のデッキ"
 		if Global.enemy_deck.name:
 			_enemy_deck_name_label.text += ": " + Global.enemy_deck.name
 		
-		Global.enemy_deck = data.deck.duplicate(true) as Deck
 		for monster in Global.enemy_deck.monster:
 			var icon := Global.MONSTER_ICON.instantiate() as MonsterIcon
 			_enemy_deck_monster_container.add_child(icon)

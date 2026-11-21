@@ -524,6 +524,7 @@ func battle_finished() -> void:
 	Global.player_deck.battle_finished()
 	Global.enemy_deck.battle_finished()
 	
+	Global.enemy_deck = Deck.new()
 	Global.enemy_deck.deck_creator(false) # 敵デッキ生成
 	
 	battle_node.battle_finished.emit(is_victory)
