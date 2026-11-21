@@ -580,8 +580,7 @@ func target_button_up(i: int) -> void:
 	await hide_target_button()
 	show_main_button() # 最初の表示に戻す ボタンは利用不可のまま
 	
-	monster.generated_action.remove_at(button_index) # TODO 不要かも？
-	monster.available_action.remove_at(button_index) # モンスターの技一覧から消す
+	monster.generated_action.remove_at(button_index) # モンスターの技一覧から消す
 
 
 func item_target_button_up(i: int) -> void:
