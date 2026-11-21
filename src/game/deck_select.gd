@@ -36,7 +36,7 @@ func _ready() -> void:
 
 
 func _update_ui(deck_slot: DeckSlot) -> void:
-	var deck: Deck = SaveManager.load_deck(deck_slot.slot_index)
+	var deck: Deck = await SaveManager.load_deck(deck_slot.slot_index)
 	all_decks[deck_slot.slot_index] = deck
 	deck_slot.deck = deck
 
