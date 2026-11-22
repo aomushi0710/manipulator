@@ -189,7 +189,7 @@ func text_animation(tab: BattlelogData.Tab, page: int) -> void:
 		return
 	
 	label.visible_characters = 0
-	if text_data[tab].image[page] != null: # 画像が存在する時
+	if text_data[tab].image.size() > page and text_data[tab].image[page] != null: # 画像が存在する時
 		container.alignment = BoxContainer.ALIGNMENT_BEGIN
 		var image = text_data[tab].image[page] ## 挿入される画像
 		image.custom_minimum_size = image.size
