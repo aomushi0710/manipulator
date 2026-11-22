@@ -120,10 +120,10 @@ func _on_tab_changed(tab: BattlelogData.Tab) -> void:
 			.set_parallel()
 		)
 		dialog_expand_tween.tween_property(
-			self, "size:y", 994, 0.5
+			self, "size:y", 900, 0.5
 		).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		dialog_expand_tween.tween_property(
-			self, "position:y", 76, 0.5
+			self, "position:y", 170, 0.5
 		).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		dialog_expand_tween.tween_property(
 			next_page_arrow, "modulate:a", 0, 0.5
