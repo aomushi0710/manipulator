@@ -41,7 +41,7 @@ var icon_modulate: float:
 func _ready() -> void:
 	monster_texture.material = shader_material.duplicate()
 
-## [param data]プロパティが変更された時に見た目を更新する関数
+## [member data]プロパティが変更された時に見た目を更新する関数
 func _update() -> void:
 	if tween and tween.is_running():
 		element_index = 0
@@ -82,42 +82,38 @@ func _update() -> void:
 				offset_list.append((i + 0.5) / len(color_list)) # 色数によって変動
 			gradient.offsets = offset_list
 			
-			blink_fade_out()
+			_blink_fade_out()
 
 ## 属性フェードアウトアニメーション
-func blink_fade_out() -> void:
+func _blink_fade_out() -> void:
 	if tween and tween.is_running():
 		tween.kill()
 	
-	tween = create_tween().bind_node(frame)
-	tween.tween_property(frame, "color", Color.WHITE, 1)\
-	.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
-	tween.parallel().tween_property(element_frame, "color", Color.WHITE, 1)\
-	.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
-	tween.parallel().tween_property(element_texture, "self_modulate:a", 0, 1)\
-	.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
-	tween.tween_callback(blink_fade_in)
+	tween = frame.create_tween().set_parallel()
+	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(frame, ^"color", Color.WHITE, 1.0)
+	tween.tween_property(element_frame, ^"color", Color.WHITE, 1.0)
+	tween.tween_property(element_texture, ^"self_modulate:a", 0.0, 1.0)
+	tween.chain().tween_callback(_blink_fade_in)
 
 ## 属性フェードインアニメーション
-func blink_fade_in() -> void:
-	change()
+func _blink_fade_in() -> void:
+	_change_elements()
 	
 	if tween and tween.is_running():
 		tween.kill()
 	
-	tween = create_tween().bind_node(frame)
-	tween.tween_property(frame, "color", 
-	data.evolution_forms[form].element[element_index].color, 1)\
-	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	tween.parallel().tween_property(element_frame, "color", 
-	data.evolution_forms[form].element[element_index].color, 1)\
-	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	tween.parallel().tween_property(element_texture, "self_modulate:a", 1, 1)\
-	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	tween.tween_callback(blink_fade_out)
+	tween = frame.create_tween().set_parallel()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(frame, ^"color", 
+	data.evolution_forms[form].element[element_index].color, 1.0)
+	tween.tween_property(element_frame, ^"color", 
+	data.evolution_forms[form].element[element_index].color, 1.0)
+	tween.tween_property(element_texture, ^"self_modulate:a", 1.0, 1.0)
+	tween.chain().tween_callback(_blink_fade_out)
 
 ## 属性切り替え関数
-func change() -> void:
+func _change_elements() -> void:
 	element_index += 1
 	if element_index >= len(data.evolution_forms[form].element): # 無効なindexを取らないように初期化
 		element_index = 0
