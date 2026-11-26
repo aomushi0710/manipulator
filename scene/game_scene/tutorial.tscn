@@ -27,6 +27,9 @@ unique_name_in_owner = true
 [node name="DialogTab" parent="Battle/Button" index="7"]
 script = ExtResource("5_ihgn3")
 
+[node name="Escape" parent="Battle/Button" index="9"]
+text = "終わる"
+
 [node name="BattleStartLabel" parent="." index="3"]
 text = "[b][color=green]Tutorial[/color] [color=yellow]Start![/color][/b]"
 
