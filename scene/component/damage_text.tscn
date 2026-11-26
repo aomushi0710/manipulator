@@ -7,6 +7,7 @@ clip_contents = false
 offset_right = 126.0
 offset_bottom = 176.0
 pivot_offset = Vector2(69, 88)
+mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
